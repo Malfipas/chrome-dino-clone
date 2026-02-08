@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chrome Dino Clone (C++ Core)</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.ts"></script>
+
+    <!-- 添加 WASM 加载提示（可选） -->
+    <script>
+      // 确保浏览器支持 WASM
+      if (!WebAssembly.instantiate) {
+        document.body.innerHTML = `
+          <div style="text-align: center; padding: 50px;">
+            <h2>浏览器不支持 WebAssembly</h2>
+            <p>请使用现代浏览器访问此页面</p>
+            <p>建议：Chrome 57+, Firefox 52+, Safari 11+, Edge 16+</p>
+          </div>
+        `
+      }
+    </script>
+  </body>
+</html>

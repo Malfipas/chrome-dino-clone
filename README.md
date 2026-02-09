@@ -1,5 +1,9 @@
 # dino-cpp-game
 
+点击神秘小链接即刻游玩👉<https://malfipas.github.io/chrome-dino-clone/>
+
+Click the link to play immediately👉<https://malfipas.github.io/chrome-dino-clone/>
+
 中英双语说明 / Bilingual README
 
 简短说明（中文）

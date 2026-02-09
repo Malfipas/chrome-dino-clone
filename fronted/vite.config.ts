@@ -5,6 +5,7 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: '/chrome-dino-clone/',
   plugins: [vue(), vueDevTools()],
   optimizeDeps: {
     exclude: ['game.js'], // 排除WASM文件从依赖优化

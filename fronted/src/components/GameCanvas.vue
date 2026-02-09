@@ -119,8 +119,7 @@ const initGame = async () => {
     gameLoop()
   }
   // 精灵图路径
-  spriteImage.src = './sprite.png'
-  //spriteImage.src = new URL('./sprite.png', import.meta.url).href
+  spriteImage.src = 'sprite.png'
 }
 
 const initWasm = async () => {
@@ -309,17 +308,6 @@ const drawObstacle = (obstacle: ObstacleState) => {
     obstacle.width,
     obstacle.height,
   )
-  // ctx.value.drawImage(
-  //   spriteImage,
-  //   config.SPRITE_X,
-  //   config.SPRITE_Y,
-  //   config.WIDTH,
-  //   config.HEIGHT,
-  //   obstacle.x,
-  //   obstacle.y,
-  //   obstacle.width,
-  //   obstacle.height,
-  //)
 }
 
 const drawScore = () => {
@@ -369,14 +357,6 @@ const handleKeyAction = (keyCode: string, isKeyDown: boolean) => {
     case 'Space':
       if (isKeyDown) {
         if (gameState.value === 'IDLE') {
-          // console.log('开始新游戏')
-          // if (wasmInitialized) {
-          //   // 调用WASM的start方法开始游戏
-          //   gameBridge.start()
-          //   gameStore.startGame()
-          //   // 同时让恐龙跳跃
-          //   gameBridge.jump()
-          // }
           console.log('开始新游戏')
           if (wasmInitialized) {
             // 先重启游戏确保状态正确

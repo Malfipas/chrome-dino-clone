@@ -107,7 +107,7 @@ class GameBridge {
     // 创建并加载 script 标签
     return new Promise<boolean>((resolve) => {
       const script = document.createElement('script')
-      script.src = './game.js'
+      script.src = 'game.js'
       script.async = true
       script.defer = true
 
@@ -144,9 +144,9 @@ class GameBridge {
         // 只使用第一个参数
         console.log('加载文件:', path)
         if (path.endsWith('.wasm')) {
-          return './game.wasm'
+          return 'game.wasm'
         }
-        return './' + path
+        return path
       },
     })
 
@@ -155,15 +155,6 @@ class GameBridge {
     // 初始化游戏
     this.module._game_init()
     console.log('游戏引擎初始化完成')
-
-    // // 分配状态缓冲区（可选，现在先不分配，看看是否正常）
-    // try {
-    //   // 先不立即分配，等需要时再分配
-    //   this.stateBufferPtr = 0
-    //   this.stateBuffer = null
-    // } catch (error) {
-    //   console.warn('内存分配警告:', error)
-    // }
 
     this.isInitialized = true
     console.log('WASM模块初始化成功')
@@ -237,7 +228,6 @@ class GameBridge {
   }
 
   // 解析游戏状态
-  // gameBridge.ts - 修正 parseGameState 函数
   parseGameState(): ParsedGameState | null {
     const stateArray = this.getStateArray()
     if (!stateArray) return null

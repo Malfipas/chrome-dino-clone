@@ -8,6 +8,7 @@
     "build": "vue-tsc && vite build",
     "preview": "vite preview",
     "build:wasm": "./scripts/build-wasm.bat",
+    "deploy": "gh-pages -d dist",
     "dev:all": "concurrently \"npm run dev\" \"npm run build:wasm -- --watch\"",
     "serve": "vite preview",
     "build-only": "vite build",

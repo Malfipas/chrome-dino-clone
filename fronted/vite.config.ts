@@ -5,7 +5,8 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/chrome-dino-clone/',
+  //base: '/chrome-dino-clone/', //生产环境-即部署到GitHub Pages时的路径
+  base: '/', //开发环境-即本地运行时的路径
   plugins: [vue(), vueDevTools()],
   optimizeDeps: {
     exclude: ['game.js'], // 排除WASM文件从依赖优化
@@ -22,8 +23,21 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
   },
+
   build: {
-    // 如果需要额外的构建配置可以放在这里
-    target: 'esnext',
+    outDir: 'dist',
+    assetsDir: 'assets',
+    // 确保 game.js, game.wasm, sprite.png 不被重命名
+    rollupOptions: {
+      output: {
+        assetFileNames: (assetInfo) => {
+          const name = assetInfo.name || ''
+          if (['game.js', 'game.wasm', 'sprite.png'].includes(name)) {
+            return '[name].[ext]' // 保持原名
+          }
+          return 'assets/[name]-[hash].[ext]'
+        },
+      },
+    },
   },
 })

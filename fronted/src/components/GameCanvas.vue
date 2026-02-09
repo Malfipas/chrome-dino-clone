@@ -119,8 +119,8 @@ const initGame = async () => {
     gameLoop()
   }
   // 精灵图路径
-  //spriteImage.src = '/public/sprite.png'
-  spriteImage.src = new URL('./sprite.png', import.meta.url).href
+  spriteImage.src = './sprite.png'
+  //spriteImage.src = new URL('./sprite.png', import.meta.url).href
 }
 
 const initWasm = async () => {

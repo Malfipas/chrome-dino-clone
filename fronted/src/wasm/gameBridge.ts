@@ -107,8 +107,7 @@ class GameBridge {
     // 创建并加载 script 标签
     return new Promise<boolean>((resolve) => {
       const script = document.createElement('script')
-      //script.src = '/game.js'
-      script.src = new URL('./game.js', import.meta.url).href
+      script.src = './game.js'
       script.async = true
       script.defer = true
 
@@ -141,18 +140,13 @@ class GameBridge {
 
     // 初始化WASM模块 - 修正 locateFile 签名
     this.module = await moduleFactory({
-      // locateFile: (path: string) => {
-      //   // 只使用第一个参数
-      //   console.log('加载文件:', path)
-      //   if (path.endsWith('.wasm')) {
-      //     return '/game.wasm'
-      //   }
-      //   return '/' + path
-      // },
       locateFile: (path: string) => {
-        // 或更健壮：用当前模块路径
-        const basePath = new URL('.', import.meta.url).href
-        return basePath + path
+        // 只使用第一个参数
+        console.log('加载文件:', path)
+        if (path.endsWith('.wasm')) {
+          return './game.wasm'
+        }
+        return './' + path
       },
     })
 
